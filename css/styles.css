@@ -353,7 +353,10 @@ button {
         align-items: center;
     }
     
-    .brand-logo { order: 1; }
+    .brand-logo { 
+        order: 1; 
+        font-size: calc(var(--text-2xl) * 0.7); /* Reduced by 30% on mobile */
+    }
     
     .nav-actions {
         order: 2;
@@ -365,13 +368,17 @@ button {
         margin-top: 0;
     }
     
-    .nav-actions a {
-        width: auto;
+    .nav-actions a.btn-primary {
+        display: none; /* Hide 'Book Consultation' on mobile header */
     }
     
     .mobile-menu-btn {
         display: flex;
         order: 3;
+    }
+    
+    .mobile-menu-btn span {
+        background-color: var(--color-navy); /* Deep Midnight icon color */
     }
 
     .nav-links {
@@ -549,6 +556,99 @@ input, textarea, select {
     
     .footer-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* High-Contrast Mobile Text Overrides (Sledgehammer Specificity) */
+    .bg-off-white .heading-lg,
+    .bg-off-white .heading-md,
+    .bg-white .heading-lg,
+    .bg-white .heading-md,
+    #resources .heading-lg,
+    #industries .heading-lg {
+        color: var(--color-navy-dark) !important; /* Deep Midnight for readability on light backgrounds */
+    }
+    
+    .bg-off-white p,
+    .bg-white p {
+        color: var(--color-navy) !important; /* Ensure paragraph contrast on light backgrounds */
+        font-weight: 500;
+    }
+
+    /* Service Card & Knowledge Hub Contrast Overrides */
+    .service-card .link-arrow,
+    .knowledge-hub-btn,
+    #resources .btn,
+    #resources .btn-outline {
+        color: var(--color-navy-dark) !important;
+        border-color: var(--color-navy-dark) !important;
+        font-weight: 700;
+    }
+    
+    .service-card .link-arrow {
+        color: var(--color-gold) !important;
+        border: none !important;
+    }
+    
+    .service-card .icon-box svg {
+        stroke: var(--color-gold) !important;
+        fill: none;
+    }
+    
+    /* Knowledge Hub Button Border */
+    .knowledge-hub-btn.btn-outline {
+        border-color: var(--color-navy-dark) !important;
+        color: var(--color-navy-dark) !important;
+    }
+
+    /* Trust Signals Visibility */
+    .trust-indicators .text-gray-500,
+    .trust-indicators .text-sm {
+        color: var(--color-navy-dark) !important;
+        font-family: var(--font-heading) !important;
+        font-size: calc(var(--text-base) * 1.1) !important;
+        font-weight: 800 !important;
+        opacity: 1 !important;
+    }
+    
+    /* Make About section subheaders visible on mobile (defaults to white global override) */
+    #about .heading-md,
+    #about .heading-sm,
+    .mission-vision-card .heading-md {
+        color: var(--color-white) !important;
+    }
+
+    /* Tight Flow Spacing Audit (Mobile) */
+    .services .section-header {
+        margin-bottom: var(--space-6) !important;
+    }
+    
+    #resources.section {
+        padding-top: var(--space-8) !important;
+    }
+    
+    .insights-grid {
+        margin-top: calc(var(--space-6) * -1) !important;
+    }
+    
+    .faq .section-header {
+        margin-bottom: var(--space-2) !important;
+    }
+    
+    .faq-question {
+        color: var(--color-navy-dark) !important; /* Dark contrasting text */
+    }
+    
+    .feature-dashboard.section {
+        padding-top: var(--space-8) !important;
+        padding-bottom: var(--space-8) !important;
+    }
+    
+    .feature-content {
+        margin-bottom: var(--space-2) !important;
+    }
+    
+    .feature-dashboard .feature-list {
+        margin-bottom: var(--space-4) !important;
     }
 }
 
