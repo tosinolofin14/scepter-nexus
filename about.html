@@ -12,7 +12,7 @@
     <style>
         .page-header { background: var(--color-navy); color: white; padding: var(--space-32) 0 var(--space-16); }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: center; margin-bottom: var(--space-20); }
-        .mission-vision-card { background: white; border-radius: var(--border-radius-lg); padding: var(--space-8); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-sm); height: 100%; }
+        .mission-vision-card { background: var(--color-navy-light); border-radius: var(--border-radius-lg); padding: var(--space-8); border: 1px solid rgba(255,255,255,0.1); box-shadow: var(--shadow-sm); height: 100%; }
         .stat-highlight { text-align: center; padding: var(--space-8) 0; }
         .stat-highlight h3 { font-size: var(--text-6xl); color: var(--color-emerald); font-family: var(--font-heading); line-height: 1; margin-bottom: var(--space-2); }
         
@@ -26,6 +26,11 @@
     <nav class="navbar scrolled">
         <div class="container nav-container">
             <a href="index.html" class="brand-logo"><span class="brand-scepter">Scepter</span><span class="brand-nexus">Nexus</span></a>
+                        <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <div class="dropdown">
@@ -40,15 +45,16 @@
                     <a href="index.html#industries">Industries <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-left:2px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
                     <div class="dropdown-content">
                         <a href="index.html#industries">SaaS & Tech</a>
-                        <a href="index.html#industries">Ecommerce</a>
-                        <a href="index.html#industries">Professional Services</a>
+                        <a href="ecommerce-retail.html">Ecommerce &amp; Retail</a>
+                        <a href="services.html">Professional Services</a>
                     </div>
                 </div>
                 <a href="about.html" style="color: var(--color-navy); font-weight: 700;">About</a>
                 <a href="pricing.html">Pricing</a>
+                <a href="portal.html" class="mobile-only-link">Client Portal</a>
             </div>
             <div class="nav-actions">
-                <a href="portal.html" class="btn btn-outline btn-sm">Client Portal</a>
+                <a href="portal.html" class="btn btn-outline btn-sm desktop-only-link">Client Portal</a>
                 <a href="contact.html" class="btn btn-primary btn-sm">Book Consultation</a>
             </div>
         </div>
@@ -95,15 +101,15 @@
                 </div>
 
                 <div class="grid-2-col gap-6" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6);">
-                    <div class="mission-vision-card">
-                        <span class="badge badge-navy border border-navy text-navy mb-4">Mission</span>
-                        <h3 class="heading-md mb-4 text-navy">Empower businesses with financial clarity.</h3>
-                        <p class="text-gray-600">We exist to remove the friction from financial operations, turning accounting from a necessary evil into a strategic growth lever through precise insights and automation.</p>
+                    <div class="mission-vision-card glass-panel-dark">
+                        <span class="badge badge-emerald border border-emerald text-emerald mb-4" style="background: transparent;">Mission</span>
+                        <h3 class="heading-md mb-4 text-white">Empower businesses with financial clarity.</h3>
+                        <p class="text-gray-300">We exist to remove the friction from financial operations, turning accounting from a necessary evil into a strategic growth lever through precise insights and automation.</p>
                     </div>
-                    <div class="mission-vision-card">
-                        <span class="badge badge-emerald mb-4">Vision</span>
-                        <h3 class="heading-md mb-4 text-navy">The intelligence partner for modern companies.</h3>
-                        <p class="text-gray-600">To become the default financial operating partner for startups, agencies, and ecommerce brands aggressively scaling beyond $10M+ ARR.</p>
+                    <div class="mission-vision-card glass-panel-dark">
+                        <span class="badge badge-emerald border border-emerald text-emerald mb-4" style="background: transparent;">Vision</span>
+                        <h3 class="heading-md mb-4 text-white">The intelligence partner for modern companies.</h3>
+                        <p class="text-gray-300">To become the default financial operating partner for startups, agencies, and ecommerce brands aggressively scaling beyond $10M+ ARR.</p>
                     </div>
                 </div>
             </div>
@@ -170,5 +176,16 @@
 
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
+    <!-- Sticky Footer CTA -->
+    <div class="sticky-footer-cta">
+        <div class="container">
+            <div class="sticky-footer-content">
+                <div class="sticky-footer-text">
+                    Download the <span>2026 Strategic Financial Toolkit</span>. Templates for ASC 606, CAC/LTV, and Board Reporting.
+                </div>
+                <a href="#contact" class="btn btn-primary btn-sm">Download Free Toolkit</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

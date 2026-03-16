@@ -35,6 +35,11 @@
     <nav class="navbar scrolled">
         <div class="container nav-container">
             <a href="index.html" class="brand-logo"><span class="brand-scepter">Scepter</span><span class="brand-nexus">Nexus</span></a>
+                        <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <div class="dropdown">
@@ -49,15 +54,16 @@
                     <a href="index.html#industries">Industries <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-left:2px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
                     <div class="dropdown-content">
                         <a href="index.html#industries">SaaS & Tech</a>
-                        <a href="index.html#industries">Ecommerce</a>
-                        <a href="index.html#industries">Professional Services</a>
+                        <a href="ecommerce-retail.html">Ecommerce &amp; Retail</a>
+                        <a href="services.html">Professional Services</a>
                     </div>
                 </div>
                 <a href="about.html">About</a>
                 <a href="pricing.html">Pricing</a>
+                <a href="portal.html" class="mobile-only-link">Client Portal</a>
             </div>
             <div class="nav-actions">
-                <a href="portal.html" class="btn btn-outline btn-sm">Client Portal</a>
+                <a href="portal.html" class="btn btn-outline btn-sm desktop-only-link">Client Portal</a>
                 <a href="contact.html" class="btn btn-primary btn-sm">Book Consultation</a>
             </div>
         </div>
@@ -188,5 +194,16 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <!-- Sticky Footer CTA -->
+    <div class="sticky-footer-cta">
+        <div class="container">
+            <div class="sticky-footer-content">
+                <div class="sticky-footer-text">
+                    Download the <span>2026 Strategic Financial Toolkit</span>. Templates for ASC 606, CAC/LTV, and Board Reporting.
+                </div>
+                <a href="#contact" class="btn btn-primary btn-sm">Download Free Toolkit</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

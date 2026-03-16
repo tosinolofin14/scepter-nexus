@@ -1,17 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    const navActions = document.querySelector('.nav-actions');
+    const mobileBtns = document.querySelectorAll('.mobile-menu-btn');
 
-    mobileBtn?.addEventListener('click', () => {
-        // Toggle active classes (would need CSS for actual mobile menu display)
-        const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
-        mobileBtn.setAttribute('aria-expanded', !isExpanded);
-        
-        // Simple toggle for demonstration (you'd normally add a class and style it in CSS)
-        // navLinks.classList.toggle('active');
-        // navActions.classList.toggle('active');
+    mobileBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const currentNavContainer = e.target.closest('.nav-container');
+            const currentNavLinks = currentNavContainer.querySelector('.nav-links');
+            
+            const isExpanded = btn.classList.contains('active');
+            btn.setAttribute('aria-expanded', !isExpanded);
+            
+            btn.classList.toggle('active');
+            if (currentNavLinks) {
+                currentNavLinks.classList.toggle('active');
+            }
+            document.body.style.overflow = isExpanded ? '' : 'hidden'; // Prevent scrolling when menu open
+        });
+    });
+    
+    // Dropdown toggles for mobile
+    const dropdowns = document.querySelectorAll('.dropdown > a');
+    dropdowns.forEach(dropdownToggle => {
+        dropdownToggle.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdownToggle.parentElement.classList.toggle('active');
+            }
+        });
     });
 
     // Navbar Scroll Effect
