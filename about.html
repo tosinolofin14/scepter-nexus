@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Scepter Nexus - Financial Intelligence</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .page-header { background: var(--color-navy); color: white; padding: var(--space-32) 0 var(--space-16); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: center; margin-bottom: var(--space-20); }
+        .mission-vision-card { background: white; border-radius: var(--border-radius-lg); padding: var(--space-8); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-sm); height: 100%; }
+        .stat-highlight { text-align: center; padding: var(--space-8) 0; }
+        .stat-highlight h3 { font-size: var(--text-6xl); color: var(--color-emerald); font-family: var(--font-heading); line-height: 1; margin-bottom: var(--space-2); }
+        
+        @media (max-width: 992px) {
+            .about-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar scrolled">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo"><span class="brand-scepter">Scepter</span><span class="brand-nexus">Nexus</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <div class="dropdown">
+                    <a href="services.html">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-left:2px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                    <div class="dropdown-content">
+                        <a href="services.html#bookkeeping">Managed Cloud Accounting</a>
+                        <a href="services.html#tax">Strategic Advisory & Tax Planning</a>
+                        <a href="services.html#cfo">Fractional CFO Services</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="index.html#industries">Industries <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-left:2px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                    <div class="dropdown-content">
+                        <a href="index.html#industries">SaaS & Tech</a>
+                        <a href="index.html#industries">Ecommerce</a>
+                        <a href="index.html#industries">Professional Services</a>
+                    </div>
+                </div>
+                <a href="about.html" style="color: var(--color-navy); font-weight: 700;">About</a>
+                <a href="pricing.html">Pricing</a>
+            </div>
+            <div class="nav-actions">
+                <a href="portal.html" class="btn btn-outline btn-sm">Client Portal</a>
+                <a href="contact.html" class="btn btn-primary btn-sm">Book Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="page-header text-center">
+            <div class="container">
+                <span class="badge badge-emerald mb-4">Mission & Identity</span>
+                <h1 class="heading-xl mb-6 text-white">Your Central Hub for Scalable Growth.</h1>
+                <p class="text-xl max-w-2xl mx-auto text-gray-300">Scepter Nexus is a national financial advisory and accounting firm for growth-oriented businesses. Most businesses are held back by fragmented data; we serve as the singular point of connection between precision accounting and visionary strategy.</p>
+            </div>
+        </header>
+
+        <section class="section bg-white">
+            <div class="container">
+                <div class="about-grid">
+                    <div>
+                        <h2 class="heading-lg mb-6 text-navy">The problem with traditional accounting</h2>
+                        <p class="text-lead text-gray-600 mb-4">Most scaling companies outgrow their local CPA before they reach $1M in ARR. They need real-time dashboards, algorithmic forecasting, and deep SaaS metric analysis, but get handed weeks-old static spreadsheets instead.</p>
+                        <p class="text-lead text-gray-600">Scepter Nexus was built to fix this. We combine elite-tier strategic finance advising with a seamless, technology-first approach, giving founders the exact financial intelligence they need to confidently push for scale.</p>
+                    </div>
+                    <div class="about-visual bg-off-white rounded-lg p-8 border border-gray-200">
+                        <!-- Abstract Visual -->
+                        <div class="flex gap-4">
+                            <div class="flex-1 bg-white p-6 rounded shadow-sm border border-gray-100">
+                                <span class="text-xs font-bold text-gray-400 uppercase">Legacy Method</span>
+                                <div class="mt-4 h-2 bg-gray-200 rounded w-full mb-2"></div>
+                                <div class="h-2 bg-gray-200 rounded w-3/4 mb-2"></div>
+                                <div class="h-2 bg-gray-200 rounded w-1/2"></div>
+                                <div class="text-right mt-4 text-gray-400 font-bold line-through">Outdated</div>
+                            </div>
+                            <div class="flex-1 bg-navy text-white p-6 rounded shadow-lg border border-navy position-relative">
+                                <span class="text-xs font-bold text-emerald uppercase">Scepter Nexus</span>
+                                <div class="mt-4 flex items-end gap-2 h-16">
+                                    <div class="w-1/3 bg-emerald rounded-t" style="height: 40%"></div>
+                                    <div class="w-1/3 bg-emerald rounded-t" style="height: 70%"></div>
+                                    <div class="w-1/3 bg-emerald rounded-t" style="height: 100%"></div>
+                                </div>
+                                <div class="text-right mt-2 text-white font-bold">Real-time</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-2-col gap-6" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6);">
+                    <div class="mission-vision-card">
+                        <span class="badge badge-navy border border-navy text-navy mb-4">Mission</span>
+                        <h3 class="heading-md mb-4 text-navy">Empower businesses with financial clarity.</h3>
+                        <p class="text-gray-600">We exist to remove the friction from financial operations, turning accounting from a necessary evil into a strategic growth lever through precise insights and automation.</p>
+                    </div>
+                    <div class="mission-vision-card">
+                        <span class="badge badge-emerald mb-4">Vision</span>
+                        <h3 class="heading-md mb-4 text-navy">The intelligence partner for modern companies.</h3>
+                        <p class="text-gray-600">To become the default financial operating partner for startups, agencies, and ecommerce brands aggressively scaling beyond $10M+ ARR.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="section bg-off-white py-16">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8);">
+                    <div class="stat-highlight">
+                        <h3>$50M+</h3>
+                        <p class="text-gray-600 font-medium">ARR Managed</p>
+                    </div>
+                    <div class="stat-highlight">
+                        <h3>99%</h3>
+                        <p class="text-gray-600 font-medium">Client Retention</p>
+                    </div>
+                    <div class="stat-highlight">
+                        <h3>14 Days</h3>
+                        <p class="text-gray-600 font-medium">Avg. Onboarding</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo footer-logo">
+                        <span class="brand-scepter">Scepter</span><span class="brand-nexus">Nexus</span>
+                    </a>
+                    <p>Empowering businesses with financial clarity and strategic insight.</p>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Services</h4>
+                    <a href="services.html#bookkeeping">Managed Cloud Accounting</a>
+                    <a href="services.html#tax">Strategic Advisory & Tax Planning</a>
+                    <a href="services.html#cfo">Fractional CFO Services</a>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Contact Us</h4>
+                    <p class="text-sm text-gray-400 mb-2">hello@scepternexus.com</p>
+                    <p class="text-sm text-gray-400 mb-4">+1 (800) 555-0199</p>
+                    <h4 style="margin-top: var(--space-4);">Legal</h4>
+                    <p class="legal-entity text-sm text-gray-400 mb-2">Operated by Scepter Enterprises LLC.</p>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Scepter Enterprises LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

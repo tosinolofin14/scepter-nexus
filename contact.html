@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Consultation | Scepter Nexus</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .page-header { background: var(--color-navy); color: white; padding: var(--space-32) 0 var(--space-16); text-align: center; }
+        
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: var(--space-16); transform: translateY(-3rem); }
+        
+        .contact-info { background: var(--color-emerald); color: white; padding: var(--space-8); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg); }
+        .contact-form-container { background: white; padding: var(--space-8); border-radius: var(--border-radius-lg); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-sm); }
+        
+        .info-item { display: flex; align-items: flex-start; gap: var(--space-4); margin-bottom: var(--space-6); color: rgba(255,255,255,0.9); }
+        .info-item svg { flex-shrink: 0; }
+        
+        .form-group { margin-bottom: var(--space-4); }
+        label { display: block; font-weight: 500; margin-bottom: var(--space-2); color: var(--color-navy); font-size: var(--text-sm); }
+        input, select, textarea { width: 100%; padding: var(--space-3); border: 1px solid var(--color-gray-300); border-radius: var(--border-radius-md); font-family: var(--font-body); font-size: var(--text-base); transition: var(--transition-fast); background: var(--color-off-white); }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--color-emerald); background: white; box-shadow: 0 0 0 2px rgba(14, 124, 97, 0.1); }
+        
+        @media (max-width: 992px) {
+            .contact-grid { grid-template-columns: 1fr; transform: translateY(0); padding-top: var(--space-8); }
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar scrolled">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo"><span class="brand-scepter">Scepter</span><span class="brand-nexus">Nexus</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <div class="dropdown">
+                    <a href="services.html">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-left:2px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                    <div class="dropdown-content">
+                        <a href="services.html#bookkeeping">Managed Cloud Accounting</a>
+                        <a href="services.html#tax">Strategic Advisory & Tax Planning</a>
+                        <a href="services.html#cfo">Fractional CFO Services</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="index.html#industries">Industries <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-left:2px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                    <div class="dropdown-content">
+                        <a href="index.html#industries">SaaS & Tech</a>
+                        <a href="index.html#industries">Ecommerce</a>
+                        <a href="index.html#industries">Professional Services</a>
+                    </div>
+                </div>
+                <a href="about.html">About</a>
+                <a href="pricing.html">Pricing</a>
+            </div>
+            <div class="nav-actions">
+                <a href="portal.html" class="btn btn-outline btn-sm">Client Portal</a>
+                <a href="contact.html" class="btn btn-primary btn-sm">Book Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="page-header">
+            <div class="container">
+                <h1 class="heading-xl mb-4 text-white">Let's Discuss Your Growth</h1>
+                <p class="text-xl max-w-2xl mx-auto text-gray-300">Schedule a free 30-minute discovery call with our strategic advisors to see how Scepter Nexus can stabilize and scale your financial operations.</p>
+            </div>
+        </header>
+
+        <section class="section pt-0 bg-off-white">
+            <div class="container">
+                <div class="contact-grid">
+                    
+                    <div class="contact-info">
+                        <h3 class="heading-md text-white mb-6">Contact Information</h3>
+                        
+                        <div class="info-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22 6 12 13 2 6"></polyline></svg>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Email</h4>
+                                <p>hello@scepternexus.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Phone</h4>
+                                <p>+1 (800) 555-0199</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-8" style="border-top: 1px solid rgba(255,255,255,0.2);">
+                            <h4 class="font-bold text-white mb-2">Scepter Enterprises LLC</h4>
+                            <p class="text-sm">Headquartered globally with virtual teams supporting high-growth companies across the execution timeline.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <h3 class="heading-md text-navy mb-6">Request a Consultation</h3>
+                        <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted successfully!');">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                                <div class="form-group">
+                                    <label for="fname">First Name</label>
+                                    <input type="text" id="fname" required placeholder="Jane">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lname">Last Name</label>
+                                    <input type="text" id="lname" required placeholder="Doe">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Work Email</label>
+                                <input type="email" id="email" required placeholder="jane@company.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="company">Company Name</label>
+                                <input type="text" id="company" required placeholder="Acme Inc.">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="revenue">Current Annual Revenue Est.</label>
+                                <select id="revenue" required>
+                                    <option value="">Select an option</option>
+                                    <option value="pre-revenue">Pre-revenue</option>
+                                    <option value="under-1m">&lt;$1M</option>
+                                    <option value="1m-5m">$1M - $5M</option>
+                                    <option value="5m-plus">$5M+</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">What are you looking to achieve?</label>
+                                <textarea id="message" rows="4" placeholder="Briefly describe your current accounting stack and what you need help with..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-full mt-4 justify-center" style="width: 100%;">Schedule Consultation</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo footer-logo">
+                        <span class="brand-scepter">Scepter</span><span class="brand-nexus">Nexus</span>
+                    </a>
+                    <p>Empowering businesses with financial clarity and strategic insight.</p>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Services</h4>
+                    <a href="services.html#bookkeeping">Managed Cloud Accounting</a>
+                    <a href="services.html#tax">Strategic Advisory & Tax Planning</a>
+                    <a href="services.html#cfo">Fractional CFO Services</a>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Contact Us</h4>
+                    <p class="text-sm text-gray-400 mb-2">hello@scepternexus.com</p>
+                    <p class="text-sm text-gray-400 mb-4">+1 (800) 555-0199</p>
+                    <h4 style="margin-top: var(--space-4);">Legal</h4>
+                    <p class="legal-entity text-sm text-gray-400 mb-2">Operated by Scepter Enterprises LLC.</p>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Scepter Enterprises LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
