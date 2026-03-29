@@ -10,22 +10,22 @@
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        .page-header { background: var(--color-off-white); padding: var(--space-32) 0 var(--space-16); }
+        .page-header { background: var(--color-emerald); padding: var(--space-32) 0 var(--space-16); }
         .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); margin-top: -3rem; }
         
         .pricing-card { background: white; border-radius: var(--border-radius-xl); padding: var(--space-8); border: 1px solid var(--color-gray-200); position: relative; transition: all var(--transition-normal); display: flex; flex-direction: column; }
         .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); border-color: var(--color-gray-300); }
         
         .pricing-card.popular { border: 2px solid var(--color-emerald); box-shadow: var(--shadow-lg); }
-        .popular-badge { background: var(--color-emerald); color: white; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); padding: 4px 16px; border-radius: var(--border-radius-full); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .popular-badge { background: black; color: white; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); padding: 4px 16px; border-radius: var(--border-radius-full); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         
-        .price { font-family: var(--font-heading); font-size: var(--text-5xl); font-weight: 800; color: var(--color-navy); margin: var(--space-4) 0; }
-        .price span { font-size: var(--text-base); color: var(--color-gray-500); font-weight: 500; }
+        .price { font-family: var(--font-heading); font-size: var(--text-5xl); font-weight: 800; color: black !important; margin: var(--space-4) 0; }
+        .price span { font-size: var(--text-base); color: black !important; font-weight: 500; }
         
-        .card-desc { color: var(--color-gray-600); font-size: var(--text-sm); margin-bottom: var(--space-8); min-height: 48px; }
+        .card-desc { color: black !important; font-size: var(--text-sm); margin-bottom: var(--space-8); min-height: 48px; }
         
         .features { list-style: none; margin-bottom: var(--space-8); flex-grow: 1; border-top: 1px solid var(--color-gray-100); padding-top: var(--space-6); }
-        .features li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: var(--space-3); font-size: var(--text-sm); color: var(--color-gray-700); }
+        .features li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: var(--space-3); font-size: var(--text-sm); color: black !important; }
         .features li svg { color: var(--color-emerald); flex-shrink: 0; margin-top: 2px; }
         
         @media (max-width: 992px) {
@@ -64,11 +64,11 @@
                     </div>
                 </div>
                 <a href="about.html">About</a>
-                <a href="pricing.html" style="color: var(--color-navy); font-weight: 700;">Pricing</a>
+                <a href="pricing.html" class="active-nav-link">Pricing</a>
                 <a href="portal.html" class="mobile-only-link">Client Portal</a>
             </div>
             <div class="nav-actions">
-                <a href="portal.html" class="btn btn-outline btn-sm desktop-only-link">Client Portal</a>
+                <a href="portal.html" class="btn btn-black btn-sm desktop-only-link">Client Portal</a>
                 <a href="contact.html" class="btn btn-primary btn-sm">Book Consultation</a>
             </div>
         </div>
@@ -78,8 +78,8 @@
         <!-- Page Header -->
         <header class="page-header text-center">
             <div class="container relative z-10">
-                <h1 class="heading-xl mb-4 text-navy">Transparent, Value-Driven Pricing</h1>
-                <p class="text-xl max-w-2xl mx-auto text-gray-600">Select the financial infrastructure tier that matches your current growth stage. No hidden fees.</p>
+                <h1 class="heading-xl mb-4 text-white">Transparent, Value-Driven Pricing</h1>
+                <p class="text-xl max-w-2xl mx-auto text-white">Select the financial infrastructure tier that matches your current growth stage. No hidden fees.</p>
             </div>
         </header>
 
@@ -90,11 +90,11 @@
                     
                     <!-- Essential -->
                     <div class="pricing-card">
-                        <h3 class="text-xl font-bold font-heading text-navy">Essential</h3>
+                        <h3 class="text-xl font-bold font-heading text-black" style="color: black;">Essential</h3>
                         <p class="card-desc">For early-stage startups resolving early revenue & expenses.</p>
                         <div class="price">$850<span>/mo</span></div>
-                        <a href="contact.html" class="btn btn-outline w-full mb-2" style="width: 100%;">Get Started</a>
-                        <p class="text-xs text-center text-gray-500 mb-0">Up to $50k MRR</p>
+                        <a href="contact.html" class="btn btn-black w-full mb-2" style="width: 100%;">Get Started</a>
+                        <p class="text-xs text-center mb-0" style="color: black;">Up to $50k MRR</p>
                         
                         <ul class="features">
                             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Account Manager</li>
@@ -107,11 +107,11 @@
                     <!-- Growth -->
                     <div class="pricing-card popular" style="transform: scale(1.05); z-index: 2;">
                         <div class="popular-badge">Most Popular</div>
-                        <h3 class="text-xl font-bold font-heading text-emerald">Growth</h3>
+                        <h3 class="text-xl font-bold font-heading text-black" style="color: black;">Growth</h3>
                         <p class="card-desc">For scaling companies needing proactive tax and financial strategy.</p>
                         <div class="price">$1,750<span>/mo</span></div>
-                        <a href="contact.html" class="btn btn-primary w-full mb-2" style="width: 100%;">Get Started</a>
-                        <p class="text-xs text-center text-gray-500 mb-0">Up to $250k MRR</p>
+                        <a href="contact.html" class="btn btn-black w-full mb-2" style="width: 100%;">Get Started</a>
+                        <p class="text-xs text-center mb-0" style="color: black;">Up to $250k MRR</p>
                         
                         <ul class="features">
                             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>Everything in Essential, plus:</strong></li>
@@ -124,11 +124,11 @@
 
                     <!-- Enterprise -->
                     <div class="pricing-card" style="border-top: 4px solid var(--color-gold);">
-                        <h3 class="text-xl font-bold font-heading text-navy">Enterprise</h3>
+                        <h3 class="text-xl font-bold font-heading text-black" style="color: black;">Enterprise</h3>
                         <p class="card-desc">For established businesses preparing for exit, M&A, or Series A+.</p>
                         <div class="price">Custom</div>
-                        <a href="contact.html" class="btn btn-outline w-full mb-2" style="width: 100%;">Talk to Sales</a>
-                        <p class="text-xs text-center text-gray-500 mb-0">For complex orgs</p>
+                        <a href="contact.html" class="btn btn-black w-full mb-2" style="width: 100%;">Talk to Sales</a>
+                        <p class="text-xs text-center mb-0" style="color: black;">For complex orgs</p>
                         
                         <ul class="features">
                             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>Everything in Growth, plus:</strong></li>
