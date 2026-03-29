@@ -1,0 +1,44 @@
+/* Additions for Industries and Insights */
+
+.border-gray-200 { border: 1px solid var(--color-gray-200); }
+.p-8 { padding: var(--space-8); }
+.mr-6 { margin-right: var(--space-6); }
+.gap-6 { gap: var(--space-6); }
+
+.grid-3-col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+}
+
+.justify-between { justify-content: space-between; }
+.align-center { align-items: center; }
+
+.badge-navy {
+    background: transparent;
+}
+
+.border-navy {
+    border-color: var(--color-navy);
+}
+
+.rounded-lg { border-radius: var(--border-radius-lg); }
+.overflow-hidden { overflow: hidden; }
+
+.resource-img {
+    background: linear-gradient(135deg, var(--color-gray-200) 0%, var(--color-gray-300) 100%);
+}
+
+.h-48 { height: 12rem; }
+.p-6 { padding: var(--space-6); }
+.block { display: block; }
+
+.hover-text-navy:hover { color: var(--color-emerald) !important; }
+
+@media (max-width: 768px) {
+    .d-none-mobile { display: none; }
+    .d-block-mobile { display: block !important; }
+    .industry-card { flex-direction: column; text-align: center; }
+    .mr-6 { margin-right: 0; margin-bottom: var(--space-4); }
+    .icon { justify-content: center; display: flex; }
+}
