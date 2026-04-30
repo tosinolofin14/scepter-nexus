@@ -3,125 +3,506 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Portal | Scepter Nexus - Financial Intelligence</title>
+    <title>Client Portal | Scepter Nexus</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
+    
     <style>
-        body { background-color: var(--color-off-white); margin: 0; padding: 0; height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
+        body {
+            background-color: var(--color-off-white, #f8f9fa);
+            background-image: linear-gradient(135deg, #1A7A5E08, #0D0D1A04);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .portal-card {
+            background: #ffffff;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+            border-radius: 16px;
+            padding: 56px 64px;
+            width: 100%;
+            max-width: 480px;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+        }
+
+        @media (max-width: 500px) {
+            .portal-card {
+                padding: 40px 32px;
+            }
+        }
+
+        .lock-icon {
+            color: #1A7A5E;
+            margin-bottom: 16px;
+        }
+
+        .portal-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: #0D0D1A;
+            margin: 0 0 8px 0;
+        }
+
+        .portal-subtitle {
+            font-size: 14px;
+            color: #6B7280;
+            max-width: 320px;
+            margin: 0 auto 32px auto;
+            line-height: 1.4;
+        }
+
+        .form-input {
+            width: 100%;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            height: 44px;
+            padding: 0 14px;
+            font-size: 14px;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .form-input::placeholder {
+            color: #9CA3AF;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #1A7A5E;
+            box-shadow: 0 0 0 3px rgba(26,122,94,0.15);
+        }
+
+        .input-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            margin-top: -8px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember-checkbox {
+            accent-color: #1A7A5E;
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .remember-label {
+            font-size: 13px;
+            color: #6B7280;
+            cursor: pointer;
+        }
+
+        .forgot-link {
+            color: #1A7A5E;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #9CA3AF;
+            font-size: 13px;
+            margin: 0 0 12px 0;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .divider::before { margin-right: 12px; }
+        .divider::after { margin-left: 12px; }
+
+        .btn-google {
+            width: 100%;
+            height: 44px;
+            background: #ffffff;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .btn-google:hover {
+            background: #F9FAFB;
+            border-color: #D1D5DB;
+        }
+
+        .auth-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .btn-primary-auth {
+            width: 100%;
+            background: #0D0D1A;
+            color: #ffffff;
+            border-radius: 8px;
+            height: 48px;
+            font-weight: 600;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary-auth:hover {
+            background: #1A7A5E;
+        }
+
+        .btn-primary-auth:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary-auth {
+            width: 100%;
+            background: transparent;
+            border: 2px solid #0D0D1A;
+            color: #0D0D1A;
+            border-radius: 8px;
+            height: 48px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-secondary-auth:hover {
+            background: #F5F5F5;
+        }
+
+        .switch-view {
+            font-size: 14px;
+            color: #6B7280;
+        }
+
+        .switch-view a {
+            color: #1A7A5E;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .switch-view a:hover {
+            text-decoration: underline;
+        }
+
+        /* Messaging and Errors */
+        .error-message {
+            color: #DC2626;
+            font-size: 13px;
+            margin-top: -8px;
+            margin-bottom: 16px;
+            text-align: left;
+            display: none;
+        }
         
-        .portal-header { background: var(--color-navy); padding: var(--space-3) var(--space-6); display: flex; justify-content: space-between; align-items: center; color: white; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .portal-header .brand-scepter { color: white; }
-        .portal-header .brand-nexus { color: var(--color-emerald); }
+        .password-hint {
+            font-size: 12px;
+            color: #6B7280;
+            text-align: left;
+            margin-top: -10px;
+            margin-bottom: 16px;
+        }
+
+        .btn-spinner {
+            animation: spin 1s linear infinite;
+            height: 20px;
+            width: 20px;
+            color: #ffffff;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
         
-        .portal-user { display: flex; align-items: center; gap: var(--space-3); }
-        .user-avatar { width: 36px; height: 36px; background: var(--gradient-accent); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; }
-        
-        .portal-layout { display: flex; flex: 1; height: calc(100vh - 61px); }
-        
-        .portal-sidebar { width: 250px; background: white; border-right: 1px solid var(--color-gray-200); padding: var(--space-6) 0; display: flex; flex-direction: column; }
-        .nav-item { padding: var(--space-3) var(--space-6); display: flex; align-items: center; gap: var(--space-3); color: var(--color-gray-600); font-weight: 500; transition: var(--transition-fast); text-decoration: none; }
-        .nav-item:hover { background: var(--color-gray-100); color: var(--color-navy); }
-        .nav-item.active { border-left: 3px solid var(--color-emerald); background: rgba(14, 124, 97, 0.05); color: var(--color-navy); padding-left: calc(var(--space-6) - 3px); }
-        
-        .portal-content { flex: 1; padding: var(--space-8); overflow-y: auto; }
-        
-        .metric-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-6); margin-bottom: var(--space-8); }
-        .metric-card { background: white; padding: var(--space-6); border-radius: var(--border-radius-lg); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-sm); }
-        .metric-title { font-size: var(--text-sm); color: var(--color-gray-500); text-transform: uppercase; font-weight: 600; margin-bottom: var(--space-2); }
-        .metric-val { font-family: var(--font-heading); font-size: var(--text-3xl); font-weight: 700; color: var(--color-navy); }
-        
-        .chart-section { background: white; padding: var(--space-6); border-radius: var(--border-radius-lg); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-sm); margin-bottom: var(--space-8); }
-        .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6); }
-        .chart-placeholder { height: 300px; background: linear-gradient(180deg, rgba(14, 124, 97, 0.05) 0%, rgba(255,255,255,0) 100%); border-bottom: 2px solid var(--color-emerald); position: relative; }
-        
-        .blur-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.7); backdrop-filter: blur(5px); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100; text-align: center; }
-        
+        .opacity-25 { opacity: 0.25; }
+        .opacity-75 { opacity: 0.75; }
+
+        #registerView {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    
-    <header class="portal-header">
-        <a href="index.html" class="brand-logo" style="font-size: 1.25rem;"><span class="brand-scepter">Scepter</span><span class="brand-nexus">Nexus</span></a>
-        <div class="portal-user">
-            <span class="text-sm font-semibold text-gray-300">Demo Account</span>
-            <div class="user-avatar">D</div>
-        </div>
-    </header>
 
-    <div class="portal-layout relative">
-        <aside class="portal-sidebar">
-            <div class="px-6 mb-4 text-xs font-bold text-gray-400 uppercase tracking-wider pl-6">Main</div>
-            <a href="#" class="nav-item active"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg> Dashboard</a>
-            <a href="#" class="nav-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Documents</a>
-            <a href="#" class="nav-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg> Advisor Chat</a>
-            
-            <div class="px-6 mb-4 mt-8 text-xs font-bold text-gray-400 uppercase tracking-wider pl-6">Financials</div>
-            <a href="#" class="nav-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg> Reports</a>
-            <a href="#" class="nav-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12" y2="12"></line><line x1="8" y1="18" x2="8" y2="15"></line><line x1="16" y1="18" x2="16" y2="15"></line></svg> Cash Flow</a>
-        </aside>
-        
-        <main class="portal-content">
-            <div class="metric-cards">
-                <div class="metric-card">
-                    <div class="metric-title">Monthly Recurring Rev</div>
-                    <div class="metric-val">$142,500</div>
-                    <div class="text-emerald text-sm font-semibold mt-2">+12.4% vs last month</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-title">Burn Rate</div>
-                    <div class="metric-val">-$24,300</div>
-                    <div class="text-navy text-sm font-semibold mt-2">Well within target</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-title">Cash Runway</div>
-                    <div class="metric-val">18.4 mos</div>
-                    <div class="text-emerald text-sm font-semibold mt-2">Extended by 2 mos</div>
-                </div>
-            </div>
-            
-            <div class="chart-section">
-                <div class="chart-header">
-                    <h3 class="heading-md text-navy">Cash Balance Forecast</h3>
-                    <select class="p-2 border border-gray-300 rounded text-sm bg-white text-gray-700">
-                        <option>Next 6 Months</option>
-                        <option>Next 12 Months</option>
-                    </select>
-                </div>
-                <div class="chart-placeholder">
-                    <!-- Fake chart line -->
-                    <svg width="100%" height="100%" preserveAspectRatio="none">
-                        <path d="M0,250 C100,200 200,220 300,150 C400,80 500,100 600,50 C700,20 800,80 900,10 L1000,0 L1000,300 L0,300 Z" fill="rgba(14, 124, 97, 0.1)" stroke="var(--color-emerald)" stroke-width="3"></path>
-                    </svg>
-                </div>
-            </div>
-            
-            <div class="blur-overlay">
-                <div class="glass-panel text-center p-8 max-w-sm">
-                    <div class="mb-4">
-                        <svg class="text-emerald" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin: 0 auto;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                    </div>
-                    <h2 class="heading-md mb-2 text-navy">Client Portal Preview</h2>
-                    <p class="text-gray-600 mb-6 font-medium">This is a mockup of the secure client dashboard. Active clients receive secure logins to view their real-time financial intelligence.</p>
-                    <a href="contact.html" class="btn btn-primary w-full">Become a Client</a>
-                    <a href="index.html" class="btn btn-outline w-full mt-3">Back to Homepage</a>
-                </div>
-            </div>
-        </main>
-    </div>
+    <!-- Login View -->
+    <div class="portal-card" id="loginView">
+        <svg class="lock-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
 
-    <!-- Sticky Footer CTA -->
-    <div class="sticky-footer-cta">
-        <div class="container">
-            <div class="sticky-footer-content">
-                <div class="sticky-footer-text">
-                    Download the <span>2026 Strategic Financial Toolkit</span>. Templates for ASC 606, CAC/LTV, and Board Reporting.
-                </div>
-                <a href="#contact" class="btn btn-primary btn-sm">Download Free Toolkit</a>
+        <h1 class="portal-title">Client Portal</h1>
+        <p class="portal-subtitle">Secure access for active Scepter Nexus clients only.</p>
+
+        <form id="loginForm">
+            <input type="email" id="loginEmail" class="form-input" placeholder="your@email.com">
+            <input type="password" id="loginPassword" class="form-input" placeholder="••••••••">
+            
+            <div id="loginError" class="error-message"></div>
+
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox" id="loginRemember" class="remember-checkbox">
+                    <span class="remember-label">Remember me</span>
+                </label>
+                <a href="#" onclick="handleForgotPassword(event)" class="forgot-link">Forgot password?</a>
             </div>
+
+            <div class="auth-buttons">
+                <button type="submit" class="btn-primary-auth">Log In</button>
+                <div class="divider">or continue with</div>
+                <button type="button" class="btn-google" onclick="handleGoogleLogin()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.16v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.16C1.43 8.55 1 10.22 1 12s.43 3.45 1.16 4.93l3.68-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.16 7.07l3.68 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    Continue with Google
+                </button>
+                <a href="index.html" class="btn-secondary-auth">Back to Homepage</a>
+            </div>
+        </form>
+
+        <div class="switch-view">
+            Don't have an account? <a onclick="toggleView(event, 'registerView')">Sign Up</a>
         </div>
     </div>
+
+    <!-- Register View -->
+    <div class="portal-card" id="registerView">
+        <svg class="lock-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <line x1="19" y1="8" x2="19" y2="14"></line>
+            <line x1="22" y1="11" x2="16" y2="11"></line>
+        </svg>
+
+        <h1 class="portal-title">Create Account</h1>
+        <p class="portal-subtitle">Request secure access to the Scepter Nexus portal.</p>
+
+        <form id="regForm">
+            <div class="input-row">
+                <input type="text" id="regFirstName" class="form-input" placeholder="First Name">
+                <input type="text" id="regLastName" class="form-input" placeholder="Last Name">
+            </div>
+            <input type="email" id="regEmail" class="form-input" placeholder="Work Email">
+            
+            <input type="password" id="regPassword" class="form-input" placeholder="Password" style="margin-bottom: 8px;">
+            <div class="password-hint">Minimum 8 characters</div>
+            
+            <input type="password" id="regConfirmPassword" class="form-input" placeholder="Confirm Password">
+            
+            <div id="regError" class="error-message"></div>
+
+            <div class="auth-buttons">
+                <button type="submit" class="btn-primary-auth">Create Account</button>
+                <a href="index.html" class="btn-secondary-auth">Back to Homepage</a>
+            </div>
+        </form>
+
+        <div class="switch-view">
+            Already have an account? <a onclick="toggleView(event, 'loginView')">Log in</a>
+        </div>
+    </div>
+
+    <script>
+        window.onload = () => {
+            const params = new URLSearchParams(window.location.search);
+            const token = params.get('token');
+            if (token) {
+                localStorage.setItem('sn_token', token);
+                window.history.replaceState({}, document.title, window.location.pathname);
+                window.location.href = '/dashboard';
+            }
+            
+            if (params.get('error') === 'google_auth_failed') {
+                const loginError = document.getElementById('loginError');
+                loginError.textContent = "Google authentication failed. Please try again.";
+                loginError.style.display = 'block';
+            }
+        };
+
+        function toggleView(e, targetId) {
+            e.preventDefault();
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('registerView').style.display = 'none';
+            document.getElementById(targetId).style.display = 'block';
+            
+            document.getElementById('loginError').style.display = 'none';
+            document.getElementById('regError').style.display = 'none';
+        }
+
+        function handleGoogleLogin() {
+            window.location.href = '/api/auth/google';
+        }
+
+        function handleForgotPassword(e) {
+            e.preventDefault();
+            alert("Password reset coming soon. Please contact hello@scepternexus.com");
+        }
+
+        const btnSpinnerHTML = `<svg class="btn-spinner" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+            const remember_me = document.getElementById('loginRemember').checked;
+            const errorDiv = document.getElementById('loginError');
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+
+            if (!email || !password) {
+                errorDiv.textContent = 'Both fields are required';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            errorDiv.style.display = 'none';
+            const oldHtml = submitBtn.innerHTML;
+            submitBtn.innerHTML = btnSpinnerHTML;
+            submitBtn.disabled = true;
+
+            try {
+                const res = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password, remember_me })
+                });
+                const data = await res.json();
+                
+                if (res.ok) {
+                    localStorage.setItem('sn_token', data.token);
+                    window.location.href = '/dashboard';
+                } else {
+                    errorDiv.textContent = data.error || 'Login failed';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (err) {
+                errorDiv.textContent = 'Network error. Please try again.';
+                errorDiv.style.display = 'block';
+            } finally {
+                submitBtn.innerHTML = oldHtml;
+                submitBtn.disabled = false;
+            }
+        });
+
+        document.getElementById('regForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const first_name = document.getElementById('regFirstName').value.trim();
+            const last_name = document.getElementById('regLastName').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const confirm_password = document.getElementById('regConfirmPassword').value;
+            const errorDiv = document.getElementById('regError');
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+
+            if (!first_name || !last_name || !email || !password || !confirm_password) {
+                errorDiv.textContent = 'All fields are required.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            if (password.length < 8) {
+                errorDiv.textContent = 'Password must be at least 8 characters.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            if (password !== confirm_password) {
+                errorDiv.textContent = 'Passwords do not match.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorDiv.textContent = 'Please enter a valid email address.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            errorDiv.style.display = 'none';
+            const oldHtml = submitBtn.innerHTML;
+            submitBtn.innerHTML = btnSpinnerHTML;
+            submitBtn.disabled = true;
+
+            try {
+                const res = await fetch('/api/auth/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ first_name, last_name, email, password, confirm_password })
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    localStorage.setItem('sn_token', data.token);
+                    window.location.href = '/dashboard';
+                } else {
+                    errorDiv.textContent = data.error || 'Signup failed';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (err) {
+                errorDiv.textContent = 'Network error. Please try again.';
+                errorDiv.style.display = 'block';
+            } finally {
+                submitBtn.innerHTML = oldHtml;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>

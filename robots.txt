@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /dashboard.html
+Disallow: /portal.html
+
+Sitemap: https://www.scepternexus.com/sitemap.xml

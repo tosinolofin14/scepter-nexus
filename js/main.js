@@ -83,4 +83,71 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Global Toast System
+    window.showToast = function(message, isError = true) {
+        let toastContainer = document.getElementById('toast-container');
+        if (!toastContainer) {
+            toastContainer = document.createElement('div');
+            toastContainer.id = 'toast-container';
+            toastContainer.style.position = 'fixed';
+            toastContainer.style.top = '24px';
+            toastContainer.style.right = '24px';
+            toastContainer.style.zIndex = '9999';
+            toastContainer.style.display = 'flex';
+            toastContainer.style.flexDirection = 'column';
+            toastContainer.style.gap = '12px';
+            document.body.appendChild(toastContainer);
+        }
+
+        const toast = document.createElement('div');
+        toast.style.background = isError ? '#DC2626' : '#1A7A5E';
+        toast.style.color = '#ffffff';
+        toast.style.padding = '12px 24px';
+        toast.style.borderRadius = '8px';
+        toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+        toast.style.fontFamily = "'Inter', sans-serif";
+        toast.style.fontSize = '14px';
+        toast.style.fontWeight = '500';
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(-20px)';
+        toast.style.transition = 'all 0.3s ease';
+        toast.textContent = message;
+
+        toastContainer.appendChild(toast);
+
+        requestAnimationFrame(() => {
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateY(0)';
+        });
+
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(-20px)';
+            setTimeout(() => toast.remove(), 300);
+        }, 4000);
+    };
+
+    // Global interception to show Toast on fetch errors generically
+    const originalFetch = window.fetch;
+    window.fetch = async function(...args) {
+        try {
+            const response = await originalFetch(...args);
+            if (!response.ok && response.url.includes('/api/')) {
+                try {
+                    const cloned = response.clone();
+                    const data = await cloned.json();
+                    if (data.error) window.showToast(data.error, true);
+                } catch {
+                    window.showToast(`Error ${response.status}: Failed to communicate with server`, true);
+                }
+            }
+            return response;
+        } catch (error) {
+            if (args[0] && typeof args[0] === 'string' && args[0].includes('/api/')) {
+                window.showToast("Network Error: Unable to connect to backend.", true);
+            }
+            throw error;
+        }
+    };
 });

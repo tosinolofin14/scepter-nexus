@@ -8,6 +8,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    scroll-padding-top: 100px;
 }
 
 body {
@@ -69,7 +70,7 @@ button {
 }
 
 .section {
-    padding: var(--space-16) 0;
+    padding: var(--space-8) 0;
 }
 
 .section-dark {
@@ -80,6 +81,23 @@ button {
 .section-dark h2, 
 .section-dark h3 {
     color: var(--color-white);
+}
+
+/* Light Background Content Auto-Contrast */
+.bg-white, .bg-off-white {
+    color: var(--color-navy);
+}
+
+.bg-white h1, .bg-white h2, .bg-white h3, .bg-white h4, .bg-white h5, .bg-white h6,
+.bg-white .heading-xl, .bg-white .heading-lg, .bg-white .heading-md,
+.bg-off-white h1, .bg-off-white h2, .bg-off-white h3, .bg-off-white h4, .bg-off-white h5, .bg-off-white h6,
+.bg-off-white .heading-xl, .bg-off-white .heading-lg, .bg-off-white .heading-md {
+    color: var(--color-navy-dark);
+}
+
+.bg-white p, .bg-off-white p,
+.bg-white .text-lead, .bg-off-white .text-lead {
+    color: var(--color-gray-700);
 }
 
 .text-center { text-align: center; }
@@ -138,6 +156,18 @@ button {
     background: linear-gradient(135deg, var(--color-emerald) 0%, var(--color-emerald-dark) 100%);
 }
 
+.btn-black {
+    background: var(--color-navy-dark);
+    color: var(--color-white);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-black:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background: #000000;
+}
+
 .btn-outline {
     border: 1px solid var(--color-gray-400);
     color: var(--color-white);
@@ -169,6 +199,23 @@ button {
     box-shadow: var(--shadow-glass);
 }
 
+/* Ensure text inside dark glass panels is always light */
+.glass-panel, .glass-panel-dark {
+    color: var(--color-gray-200);
+}
+
+.glass-panel h1, .glass-panel h2, .glass-panel h3, .glass-panel h4, .glass-panel h5, .glass-panel h6,
+.glass-panel .heading-xl, .glass-panel .heading-lg, .glass-panel .heading-md,
+.glass-panel-dark h1, .glass-panel-dark h2, .glass-panel-dark h3, .glass-panel-dark h4, .glass-panel-dark h5, .glass-panel-dark h6,
+.glass-panel-dark .heading-xl, .glass-panel-dark .heading-lg, .glass-panel-dark .heading-md {
+    color: var(--color-white) !important;
+}
+
+.glass-panel p, .glass-panel-dark p,
+.glass-panel .text-lead, .glass-panel-dark .text-lead,
+.glass-panel .text-gray-600, .glass-panel-dark .text-gray-600 {
+    color: var(--color-gray-300) !important;
+}
 .badge {
     display: inline-block;
     padding: var(--space-1) var(--space-3);
@@ -516,7 +563,7 @@ input, textarea, select {
     
     /* Vertical Breathing Room - Tightened */
     .section {
-        padding: var(--space-12) 0; 
+        padding: var(--space-6) 0; 
     }
     
     /* Touch Targets */
@@ -718,4 +765,18 @@ input, textarea, select {
 /* Ensure body has padding for the sticky footer */
 body {
     padding-bottom: 80px; 
+}
+
+/* Active Navigation Link */
+.active-nav-link {
+    color: var(--color-navy) !important;
+    font-weight: 700 !important;
+}
+
+@media (max-width: 992px) {
+    .nav-links .active-nav-link,
+    .nav-links a.active-nav-link,
+    .nav-links .dropdown > a.active-nav-link {
+        color: white !important;
+    }
 }

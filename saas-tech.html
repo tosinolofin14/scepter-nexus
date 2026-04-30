@@ -18,11 +18,11 @@
         .service-block { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: center; margin-bottom: var(--space-20); padding-bottom: var(--space-12); border-bottom: 1px solid var(--color-gray-200); }
         .service-block:nth-child(even) .service-content { order: 2; }
         .service-block:nth-child(even) .service-visual { order: 1; }
-        .workflow-diagram { background: var(--color-off-white); border-radius: var(--border-radius-lg); padding: var(--space-6); border: 1px solid var(--color-gray-200); position: relative; }
-        .workflow-step { background: white; padding: var(--space-4); border-radius: var(--border-radius-md); box-shadow: var(--shadow-sm); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-3); font-weight: 500; border: 1px solid var(--color-gray-100); }
-        .workflow-arrow { width: 2px; height: 20px; background: var(--color-emerald); margin: 0 auto; }
+        .workflow-diagram { background: #1c1c1e; border-radius: 12px; padding: 24px; border: 1px solid #3a3a3c; position: relative; color: white; box-shadow: none !important; }
+        .workflow-step { background: #2c2c2e; padding: var(--space-4); border-radius: var(--border-radius-md); box-shadow: none; margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-3); font-weight: 500; border: 1px solid #3a3a3c; color: white; }
+        .workflow-arrow { width: 2px; height: 20px; background: #34d399; margin: 0 auto; }
         .deliverables-list { list-style: none; margin: var(--space-6) 0; }
-        .deliverables-list li { margin-bottom: var(--space-3); padding-left: var(--space-6); position: relative; color: var(--color-gray-700); }
+        .deliverables-list li { margin-bottom: var(--space-3); padding-left: var(--space-6); position: relative; color: var(--color-gray-300); }
         .deliverables-list li::before { content: '✓'; position: absolute; left: 0; color: var(--color-emerald); font-weight: bold; }
         
         @media (max-width: 992px) {
@@ -45,7 +45,7 @@
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <div class="dropdown">
-                    <a href="services.html" style="color: var(--color-navy); font-weight: 700;">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-left:2px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                    <a href="services.html" class="active-nav-link">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-left:2px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
                     <div class="dropdown-content">
                         <a href="services.html#bookkeeping">Managed Cloud Accounting</a>
                         <a href="services.html#tax">Strategic Advisory & Tax Planning</a>
@@ -65,7 +65,7 @@
                 <a href="portal.html" class="mobile-only-link">Client Portal</a>
             </div>
             <div class="nav-actions">
-                <a href="portal.html" class="btn btn-outline btn-sm desktop-only-link">Client Portal</a>
+                <a href="portal.html" class="btn btn-black btn-sm desktop-only-link">Client Portal</a>
                 <a href="contact.html" class="btn btn-primary btn-sm">Book Consultation</a>
             </div>
         </div>
@@ -82,16 +82,15 @@
         </header>
 
         <!-- Services Detail -->
-        <section class="section bg-white">
+        <section class="section section-dark">
             <div class="container">
                 
                 <!-- Service 1 -->
                 <div id="bookkeeping" class="service-block">
                     <div class="service-content">
-                        <h2 class="heading-lg mb-4">Revenue Recognition (ASC 606)</h2>
-                        <p class="text-lead text-gray-600 mb-6">Automate complex revenue schedules for SaaS subscriptions, giving you and your board complete confidence in your GAAP financials.</p>
+                        <h2 class="heading-lg mb-4 text-white">Revenue Recognition (ASC 606)</h2>>
                         
-                        <h4 class="text-lg font-bold mb-3 text-navy">Key Deliverables:</h4>
+                        <h4 class="text-lg font-bold mb-3 text-white">Key Deliverables:</h4>
                         <ul class="deliverables-list">
                             <li>Dedicated account manager & support channel</li>
                             <li>Automated bank feed reconciliation</li>
@@ -107,7 +106,8 @@
                     </div>
                     <div class="service-visual">
                         <div class="workflow-diagram shadow-lg">
-                            <p class="text-sm text-center text-gray-500 mb-4 uppercase font-bold tracking-wider">The Automated Close Workflow</p>
+                            <p style="font-size: 16px; font-weight: 600; color: #a1a1a6; text-align: left; margin: 0 0 12px 0;">The Automated Close Workflow</p>
+                            <p style="font-size: 14px; font-weight: 400; color: #ffffff; line-height: 1.5; text-align: left; margin: 0 0 40px 0;">Automate complex revenue schedules for SaaS subscriptions, giving you and your board complete confidence in your GAAP financials.</p>
                             <div class="workflow-step">
                                 <span class="bg-gray-100 p-2 rounded-md"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
                                 Bank & SaaS API Integration
@@ -118,8 +118,8 @@
                                 AI-Assisted Transaction Mapping
                             </div>
                             <div class="workflow-arrow"></div>
-                            <div class="workflow-step" style="border-color: var(--color-emerald); background: rgba(14, 124, 97, 0.05);">
-                                <span class="bg-emerald text-white p-2 rounded-md"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <div class="workflow-step" style="border-color: #34d399; background: rgba(52, 211, 153, 0.05);">
+                                <span class="text-white p-2 rounded-md" style="background-color: #34d399;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
                                 Accurate Month-End Financials
                             </div>
                         </div>
@@ -129,10 +129,10 @@
                 <!-- Service 2 -->
                 <div id="cfo" class="service-block">
                     <div class="service-content">
-                        <h2 class="heading-lg mb-4">Unit Economics (CAC/LTV)</h2>
-                        <p class="text-lead text-gray-600 mb-6">Understand your true customer acquisition cost and lifetime value. We build custom dashboards to track the metrics that matter most to investors.</p>
+                        <h2 class="heading-lg mb-4 text-white">Unit Economics (CAC/LTV)</h2>
+                        <p class="text-lead text-gray-300 mb-6">Understand your true customer acquisition cost and lifetime value. We build custom dashboards to track the metrics that matter most to investors.</p>
                         
-                        <h4 class="text-lg font-bold mb-3 text-navy">Key Deliverables:</h4>
+                        <h4 class="text-lg font-bold mb-3 text-white">Key Deliverables:</h4>
                         <ul class="deliverables-list">
                             <li>3-statement financial modeling</li>
                             <li>Monthly strategy meetings</li>
@@ -165,10 +165,10 @@
                 <!-- Service 3 -->
                 <div id="tax" class="service-block border-0 mb-0 pb-0">
                     <div class="service-content">
-                        <h2 class="heading-lg mb-4">R&D Tax Credit Maximization</h2>
-                        <p class="text-lead text-gray-600 mb-6">Identify and claim every dollar of qualifying software development expenses. Our average SaaS client saves over $1.2M annually.</p>
+                        <h2 class="heading-lg mb-4 text-white">R&D Tax Credit Maximization</h2>
+                        <p class="text-lead text-gray-300 mb-6">Identify and claim every dollar of qualifying software development expenses. Our average SaaS client saves over $1.2M annually.</p>
                         
-                        <h4 class="text-lg font-bold mb-3 text-navy">Key Deliverables:</h4>
+                        <h4 class="text-lg font-bold mb-3 text-white">Key Deliverables:</h4>
                         <ul class="deliverables-list">
                             <li>Quarterly estimated tax calculations</li>
                             <li>R&D tax credit studies (SaaS/Tech)</li>
@@ -177,10 +177,10 @@
                         </ul>
                     </div>
                     <div class="service-visual">
-                        <div class="bg-off-white p-8 rounded-lg border border-gray-200 text-center">
-                            <h3 class="text-5xl font-heading font-bold text-navy mb-2">$1.2M+</h3>
-                            <p class="text-gray-600 mb-6">Average R&D credits identified for our SaaS clients annually.</p>
-                            <a href="contact.html" class="btn btn-outline w-full justify-center">Schedule Tax Audit</a>
+                        <div class="glass-panel p-8 rounded-lg border border-gray-700 text-center" style="padding: 32px; text-align: center;">
+                            <h3 style="font-size: 3rem; font-family: var(--font-heading); font-weight: 800; color: var(--color-emerald); margin-bottom: 8px;">$1.2M+</h3>
+                            <p class="text-gray-300 mb-6" style="margin-bottom: 24px;">Average R&D credits identified for our SaaS clients annually.</p>
+                            <a href="contact.html" class="btn btn-outline" style="display: block; width: 100%; text-align: center;">Schedule Tax Audit</a>
                         </div>
                     </div>
                 </div>
