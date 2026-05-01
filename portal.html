@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <meta property="og:title" content="Scepter Nexus">
+    <meta property="og:description" content="Scepter Nexus works with all sizes of businesses local, small, medium, large etc.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.scepternexus.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Portal | Scepter Nexus</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
-    
+
     <style>
         body {
             background-color: var(--color-off-white, #f8f9fa);
@@ -25,7 +34,7 @@
 
         .portal-card {
             background: #ffffff;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10);
             border-radius: 16px;
             padding: 56px 64px;
             width: 100%;
@@ -82,7 +91,7 @@
         .form-input:focus {
             outline: none;
             border-color: #1A7A5E;
-            box-shadow: 0 0 0 3px rgba(26,122,94,0.15);
+            box-shadow: 0 0 0 3px rgba(26, 122, 94, 0.15);
         }
 
         .input-row {
@@ -138,14 +147,20 @@
             margin: 0 0 12px 0;
         }
 
-        .divider::before, .divider::after {
+        .divider::before,
+        .divider::after {
             content: '';
             flex: 1;
             border-bottom: 1px solid #E5E7EB;
         }
 
-        .divider::before { margin-right: 12px; }
-        .divider::after { margin-left: 12px; }
+        .divider::before {
+            margin-right: 12px;
+        }
+
+        .divider::after {
+            margin-left: 12px;
+        }
 
         .btn-google {
             width: 100%;
@@ -162,7 +177,7 @@
             gap: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
             font-family: 'Inter', sans-serif;
             box-sizing: border-box;
         }
@@ -254,7 +269,7 @@
             text-align: left;
             display: none;
         }
-        
+
         .password-hint {
             font-size: 12px;
             color: #6B7280;
@@ -271,23 +286,35 @@
         }
 
         @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
-        
-        .opacity-25 { opacity: 0.25; }
-        .opacity-75 { opacity: 0.75; }
+
+        .opacity-25 {
+            opacity: 0.25;
+        }
+
+        .opacity-75 {
+            opacity: 0.75;
+        }
 
         #registerView {
             display: none;
         }
     </style>
 </head>
+
 <body>
 
     <!-- Login View -->
     <div class="portal-card" id="loginView">
-        <svg class="lock-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="lock-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
         </svg>
@@ -296,9 +323,9 @@
         <p class="portal-subtitle">Secure access for active Scepter Nexus clients only.</p>
 
         <form id="loginForm">
-            <input type="email" id="loginEmail" class="form-input" placeholder="your@email.com">
+            <input type="email" id="loginEmail" class="form-input" placeholder="tosin@scepternexus.com">
             <input type="password" id="loginPassword" class="form-input" placeholder="••••••••">
-            
+
             <div id="loginError" class="error-message"></div>
 
             <div class="form-options">
@@ -313,7 +340,20 @@
                 <button type="submit" class="btn-primary-auth">Log In</button>
                 <div class="divider">or continue with</div>
                 <button type="button" class="btn-google" onclick="handleGoogleLogin()">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.16v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.16C1.43 8.55 1 10.22 1 12s.43 3.45 1.16 4.93l3.68-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.16 7.07l3.68 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                            fill="#4285F4" />
+                        <path
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.16v2.84C3.99 20.53 7.7 23 12 23z"
+                            fill="#34A853" />
+                        <path
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.16C1.43 8.55 1 10.22 1 12s.43 3.45 1.16 4.93l3.68-2.84z"
+                            fill="#FBBC05" />
+                        <path
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.16 7.07l3.68 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                            fill="#EA4335" />
+                    </svg>
                     Continue with Google
                 </button>
                 <a href="index.html" class="btn-secondary-auth">Back to Homepage</a>
@@ -327,7 +367,8 @@
 
     <!-- Register View -->
     <div class="portal-card" id="registerView">
-        <svg class="lock-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="lock-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
             <circle cx="9" cy="7" r="4"></circle>
             <line x1="19" y1="8" x2="19" y2="14"></line>
@@ -343,12 +384,13 @@
                 <input type="text" id="regLastName" class="form-input" placeholder="Last Name">
             </div>
             <input type="email" id="regEmail" class="form-input" placeholder="Work Email">
-            
-            <input type="password" id="regPassword" class="form-input" placeholder="Password" style="margin-bottom: 8px;">
+
+            <input type="password" id="regPassword" class="form-input" placeholder="Password"
+                style="margin-bottom: 8px;">
             <div class="password-hint">Minimum 8 characters</div>
-            
+
             <input type="password" id="regConfirmPassword" class="form-input" placeholder="Confirm Password">
-            
+
             <div id="regError" class="error-message"></div>
 
             <div class="auth-buttons">
@@ -371,7 +413,7 @@
                 window.history.replaceState({}, document.title, window.location.pathname);
                 window.location.href = '/dashboard';
             }
-            
+
             if (params.get('error') === 'google_auth_failed') {
                 const loginError = document.getElementById('loginError');
                 loginError.textContent = "Google authentication failed. Please try again.";
@@ -384,7 +426,7 @@
             document.getElementById('loginView').style.display = 'none';
             document.getElementById('registerView').style.display = 'none';
             document.getElementById(targetId).style.display = 'block';
-            
+
             document.getElementById('loginError').style.display = 'none';
             document.getElementById('regError').style.display = 'none';
         }
@@ -395,7 +437,7 @@
 
         function handleForgotPassword(e) {
             e.preventDefault();
-            alert("Password reset coming soon. Please contact hello@scepternexus.com");
+            alert("Password reset coming soon. Please contact tosin@scepternexus.com");
         }
 
         const btnSpinnerHTML = `<svg class="btn-spinner" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
@@ -426,7 +468,7 @@
                     body: JSON.stringify({ email, password, remember_me })
                 });
                 const data = await res.json();
-                
+
                 if (res.ok) {
                     localStorage.setItem('sn_token', data.token);
                     window.location.href = '/dashboard';
@@ -505,4 +547,5 @@
         });
     </script>
 </body>
+
 </html>

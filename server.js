@@ -55,9 +55,9 @@ const db = new sqlite3.Database(dbPath, (err) => {
             id INTEGER PRIMARY KEY AUTOINCREMENT, first_name TEXT, last_name TEXT, work_email TEXT, company_name TEXT, annual_revenue_est TEXT, goals TEXT, submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`);
         db.run(`CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT, first_name TEXT, last_name TEXT, email TEXT UNIQUE NOT NULL, password_hash TEXT, google_id TEXT UNIQUE, avatar_url TEXT, remember_token TEXT, is_active INTEGER DEFAULT 1, created_at DATETIME DEFAULT CURRENT_TIMESTAMP, last_login DATETIME, reset_token TEXT, reset_token_expires DATETIME)`);
-        db.run("ALTER TABLE users ADD COLUMN reset_token TEXT", (err) => {});
-        db.run("ALTER TABLE users ADD COLUMN reset_token_expires DATETIME", (err) => {});
-        
+        db.run("ALTER TABLE users ADD COLUMN reset_token TEXT", (err) => { });
+        db.run("ALTER TABLE users ADD COLUMN reset_token_expires DATETIME", (err) => { });
+
         // Functional Widget Tables
         db.run(`CREATE TABLE IF NOT EXISTS documents (
             id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, name TEXT, content_base64 TEXT, created_at DATETIME DEFAULT CURRENT_TIMESTAMP)`);
@@ -72,7 +72,7 @@ const transporter = nodemailer.createTransport({
 });
 
 function sendEmail(mailOptions) {
-    if(!process.env.EMAIL_USER) return;
+    if (!process.env.EMAIL_USER) return;
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) console.error('Error sending email:', error);
     });
@@ -82,7 +82,7 @@ passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID || 'dummy_id',
     clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'dummy_secret',
     callbackURL: process.env.GOOGLE_CALLBACK_URL || '/api/auth/google/callback'
-  }, function(accessToken, refreshToken, profile, cb) {
+}, function (accessToken, refreshToken, profile, cb) {
     const email = profile.emails && profile.emails[0].value;
     const googleId = profile.id;
     const firstName = profile.name ? profile.name.givenName : '';
@@ -96,24 +96,24 @@ passport.use(new GoogleStrategy({
         let now = new Date().toISOString();
         if (row) {
             if (!row.google_id) {
-                db.run('UPDATE users SET google_id = ?, avatar_url = ?, last_login = ? WHERE id = ?', 
+                db.run('UPDATE users SET google_id = ?, avatar_url = ?, last_login = ? WHERE id = ?',
                     [googleId, avatarUrl || row.avatar_url, now, row.id], (err2) => {
                         if (err2) return cb(err2);
                         row.google_id = googleId; row.last_login = now; return cb(null, row);
-                });
+                    });
             } else {
                 db.run('UPDATE users SET last_login = ? WHERE id = ?', [now, row.id]);
                 row.last_login = now; return cb(null, row);
             }
         } else {
-            db.run('INSERT INTO users (first_name, last_name, email, google_id, avatar_url, last_login) VALUES (?, ?, ?, ?, ?, ?)', 
-                [firstName, lastName, email, googleId, avatarUrl, now], function(err) {
+            db.run('INSERT INTO users (first_name, last_name, email, google_id, avatar_url, last_login) VALUES (?, ?, ?, ?, ?, ?)',
+                [firstName, lastName, email, googleId, avatarUrl, now], function (err) {
                     if (err) return cb(err);
                     db.get('SELECT * FROM users WHERE id = ?', [this.lastID], (err, newUser) => {
                         sendEmail({ from: process.env.EMAIL_USER, to: email, subject: 'Welcome to Scepter Nexus', text: `Hi ${firstName}, welcome to Scepter Nexus!` });
                         return cb(null, newUser);
                     });
-            });
+                });
         }
     });
 }));
@@ -145,9 +145,9 @@ app.post('/api/consultation', (req, res) => {
     if (!validator.isEmail(work_email)) return res.status(400).json({ error: 'Valid email required' });
 
     const sql = `INSERT INTO consultation_requests (first_name, last_name, work_email, company_name, annual_revenue_est, goals) VALUES (?, ?, ?, ?, ?, ?)`;
-    db.run(sql, [first_name, last_name, work_email, company_name, annual_revenue_est, goals], function(err) {
+    db.run(sql, [first_name, last_name, work_email, company_name, annual_revenue_est, goals], function (err) {
         if (err) return res.status(500).json({ error: 'Failed to submit' });
-        sendEmail({ from: process.env.EMAIL_USER, to: 'hello@scepternexus.com', subject: 'New Consultation Request', text: `New consultation from ${first_name} ${last_name} (${work_email})\nCompany: ${company_name}` });
+        sendEmail({ from: process.env.EMAIL_USER, to: 'tosin@scepternexus.com', subject: 'New Consultation Request', text: `New consultation from ${first_name} ${last_name} (${work_email})\nCompany: ${company_name}` });
         res.status(201).json({ message: 'Submitted.', id: this.lastID });
     });
 });
@@ -166,12 +166,12 @@ app.post('/api/auth/signup', authLimiter, async (req, res) => {
 
         const hash = await bcrypt.hash(password, await bcrypt.genSalt(12));
         db.run('INSERT INTO users (first_name, last_name, email, password_hash, last_login) VALUES (?, ?, ?, ?, ?)',
-            [validator.escape(first_name), validator.escape(last_name), email, hash, new Date().toISOString()], function(err) {
+            [validator.escape(first_name), validator.escape(last_name), email, hash, new Date().toISOString()], function (err) {
                 if (err) return res.status(500).json({ error: 'Failed to create user.' });
                 const token = jwt.sign({ id: this.lastID, first_name, last_name, email }, process.env.JWT_SECRET || 'secret', { expiresIn: '24h' });
                 sendEmail({ from: process.env.EMAIL_USER, to: email, subject: 'Welcome to Scepter Nexus', text: `Hi ${first_name}, welcome to Scepter Nexus!` });
                 res.status(201).json({ message: 'Signup successful', token });
-        });
+            });
     });
 });
 
@@ -244,7 +244,7 @@ app.post('/api/documents', authenticateToken, (req, res) => {
     // using base64 via json body instead of multer for zero-dependency native functional prototyping
     const { name, base64 } = req.body;
     if (!name || !base64) return res.status(400).json({ error: 'Missing file data' });
-    db.run('INSERT INTO documents (user_id, name, content_base64) VALUES (?, ?, ?)', [req.user.id, name, base64], function(err) {
+    db.run('INSERT INTO documents (user_id, name, content_base64) VALUES (?, ?, ?)', [req.user.id, name, base64], function (err) {
         if (err) return res.status(500).json({ error: 'File save failed' });
         res.json({ id: this.lastID, name, created_at: new Date().toISOString() });
     });
@@ -253,7 +253,7 @@ app.post('/api/documents', authenticateToken, (req, res) => {
 app.get('/api/messages', authenticateToken, (req, res) => {
     db.all('SELECT id, sender, content, created_at FROM messages WHERE user_id = ? ORDER BY created_at ASC', [req.user.id], (err, rows) => {
         if (err) return res.status(500).json({ error: 'DB Error' });
-        
+
         let msgs = rows || [];
         if (msgs.length === 0) {
             const welcomeMsg = "Hi there! I'm your dedicated Scepter Nexus advisor. How can I help you today?";
@@ -267,8 +267,8 @@ app.get('/api/messages', authenticateToken, (req, res) => {
 app.post('/api/messages', authenticateToken, (req, res) => {
     const { content } = req.body;
     if (!content) return res.status(400).json({ error: 'Message cannot be empty' });
-    
-    db.run('INSERT INTO messages (user_id, sender, content) VALUES (?, ?, ?)', [req.user.id, 'user', content], function(err) {
+
+    db.run('INSERT INTO messages (user_id, sender, content) VALUES (?, ?, ?)', [req.user.id, 'user', content], function (err) {
         if (err) return res.status(500).json({ error: 'Failed to send' });
         res.json({ id: this.lastID, sender: 'user', content, created_at: new Date().toISOString() });
     });
@@ -276,7 +276,7 @@ app.post('/api/messages', authenticateToken, (req, res) => {
 
 app.get('/api/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 app.get('/api/auth/google/callback', passport.authenticate('google', { failureRedirect: '/portal.html?error=google_auth_failed' }), (req, res) => {
-    const token = jwt.sign({ id: req.user.id, first_name: req.user.first_name, last_name: req.user.last_name, email: req.user.email }, process.env.JWT_SECRET || 'secret', { expiresIn: '30d' }); 
+    const token = jwt.sign({ id: req.user.id, first_name: req.user.first_name, last_name: req.user.last_name, email: req.user.email }, process.env.JWT_SECRET || 'secret', { expiresIn: '30d' });
     res.redirect(`${process.env.CLIENT_URL || 'http://localhost:3001'}/portal.html?token=${token}`);
 });
 
