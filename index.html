@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/home-layout.css">
+
+    <!-- Calendly popup widget integration -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 
 <body>
@@ -74,7 +78,7 @@
             </div>
             <div class="nav-actions">
                 <a href="portal.html" class="btn btn-black btn-sm desktop-only-link">Client Portal</a>
-                <a href="contact.html" class="btn btn-primary btn-sm">Book Consultation</a>
+                <a href="contact.html#request-consultation" class="btn btn-primary btn-sm">Book Consultation</a>
             </div>
         </div>
     </nav>
@@ -91,7 +95,7 @@
                     <p class="text-lead mb-4 text-gray-300">Scepter Nexus helps modern companies gain financial clarity
                         through strategic accounting, tax optimization, and AI-driven financial insights.</p>
                     <div class="hero-actions flex gap-4">
-                        <a href="#contact" class="btn btn-primary">Book a Consultation</a>
+                        <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/scepternexus/consultation?hide_landing_page_details=1'});return false;" class="btn btn-primary">Book a Consultation</a>
                         <a href="#services" class="btn btn-outline-light">View Services</a>
                     </div>
                 </div>
@@ -463,7 +467,7 @@
                 <h2 class="heading-xl mb-4 text-white">Ready to Take Control of Your Finances?</h2>
                 <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">Join the top-tier businesses using Scepter Nexus to
                     aggressively and intelligently scale.</p>
-                <a href="contact.html"
+                <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/scepternexus/consultation?hide_landing_page_details=1'});return false;"
                     class="btn btn-primary btn-lg bg-navy hover-bg-navy-light text-white border-0">Schedule a Free
                     Consultation</a>
             </div>
@@ -505,6 +509,9 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Scepter Enterprises LLC. All rights reserved.</p>
+                <p style="font-size: 0.75rem; color: var(--color-gray-500); margin-top: 8px; line-height: 1.4; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0.75;">
+                    For your organization's absolute security and peace of mind, Scepter Nexus operates under institutional-grade professional safeguards. As a fully registered and bonded practice, our operations are backed by comprehensive Errors and Omissions (E&O) professional liability insurance, ensuring rigorous financial fidelity, risk mitigation, and compliance across all strategic and tax operations.
+                </p>
             </div>
         </div>
     </footer>

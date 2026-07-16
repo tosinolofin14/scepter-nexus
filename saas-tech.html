@@ -23,6 +23,10 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Calendly popup widget integration -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     <style>
         .page-header {
             background: var(--color-navy);
@@ -158,7 +162,7 @@
             </div>
             <div class="nav-actions">
                 <a href="portal.html" class="btn btn-black btn-sm desktop-only-link">Client Portal</a>
-                <a href="contact.html" class="btn btn-primary btn-sm">Book Consultation</a>
+                <a href="contact.html#request-consultation" class="btn btn-primary btn-sm">Book Consultation</a>
             </div>
         </div>
     </nav>
@@ -306,7 +310,7 @@
                                 $1.2M+</h3>
                             <p class="text-gray-300 mb-6" style="margin-bottom: 24px;">Average R&D credits identified
                                 for our SaaS clients annually.</p>
-                            <a href="contact.html" class="btn btn-outline"
+                            <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/scepternexus/consultation?hide_landing_page_details=1'});return false;" class="btn btn-outline"
                                 style="display: block; width: 100%; text-align: center;">Schedule Tax Audit</a>
                         </div>
                     </div>
@@ -351,6 +355,9 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Scepter Enterprises LLC. All rights reserved.</p>
+                <p style="font-size: 0.75rem; color: var(--color-gray-500); margin-top: 8px; line-height: 1.4; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0.75;">
+                    For your organization's absolute security and peace of mind, Scepter Nexus operates under institutional-grade professional safeguards. As a fully registered and bonded practice, our operations are backed by comprehensive Errors and Omissions (E&O) professional liability insurance, ensuring rigorous financial fidelity, risk mitigation, and compliance across all strategic and tax operations.
+                </p>
             </div>
         </div>
     </footer>

@@ -16,6 +16,10 @@
     
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Calendly popup widget integration -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     <style>
         .page-header { background: var(--color-off-white); padding: var(--space-32) 0 var(--space-16); }
         .case-studies-grid { display: flex; flex-direction: column; gap: var(--space-16); margin-top: -3rem; position: relative; z-index: 10; }
@@ -66,7 +70,7 @@
             </div>
             <div class="nav-actions">
                 <a href="portal.html" class="btn btn-black btn-sm desktop-only-link">Client Portal</a>
-                <a href="contact.html" class="btn btn-primary btn-sm">Book Consultation</a>
+                <a href="contact.html#request-consultation" class="btn btn-primary btn-sm">Book Consultation</a>
             </div>
         </div>
     </nav>
@@ -171,7 +175,7 @@
         <section class="section bg-emerald text-center">
             <div class="container">
                 <h2 class="heading-md text-white mb-4">Want to see similar results for your business?</h2>
-                <a href="contact.html" class="btn btn-primary bg-navy text-white border-0 mt-4">Speak with a Strategic Expert</a>
+                <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/scepternexus/consultation?hide_landing_page_details=1'});return false;" class="btn btn-primary bg-navy text-white border-0 mt-4">Speak with a Strategic Expert</a>
             </div>
         </section>
 
@@ -181,6 +185,9 @@
         <div class="container">
             <div class="footer-bottom">
                 <p>&copy; 2026 Scepter Enterprises LLC. All rights reserved.</p>
+                <p style="font-size: 0.75rem; color: var(--color-gray-500); margin-top: 8px; line-height: 1.4; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0.75;">
+                    For your organization's absolute security and peace of mind, Scepter Nexus operates under institutional-grade professional safeguards. As a fully registered and bonded practice, our operations are backed by comprehensive Errors and Omissions (E&O) professional liability insurance, ensuring rigorous financial fidelity, risk mitigation, and compliance across all strategic and tax operations.
+                </p>
             </div>
         </div>
     </footer>
