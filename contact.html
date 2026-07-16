@@ -213,66 +213,10 @@
 
                     <div class="contact-form-container">
                         <h3 class="heading-md text-navy mb-6">Request a Consultation</h3>
-                        <form id="consultationForm">
-                            <style>
-                                .field-error {
-                                    color: #DC2626;
-                                    font-size: 12px;
-                                    margin-top: 4px;
-                                    display: none;
-                                }
-
-                                .form-group {
-                                    position: relative;
-                                }
-                            </style>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
-                                <div class="form-group">
-                                    <label for="fname">First Name</label>
-                                    <input type="text" id="fname" required placeholder="Jane">
-                                    <div class="field-error" id="err-fname">First name is required</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lname">Last Name</label>
-                                    <input type="text" id="lname" required placeholder="Doe">
-                                    <div class="field-error" id="err-lname">Last name is required</div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Work Email</label>
-                                <input type="email" id="email" required placeholder="tosin@scepternexus.com">
-                                <div class="field-error" id="err-email">Valid email is required</div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="company">Company Name</label>
-                                <input type="text" id="company" required placeholder="Acme Inc.">
-                                <div class="field-error" id="err-company">Company name is required</div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="revenue">Current Annual Revenue Est.</label>
-                                <select id="revenue" required>
-                                    <option value="">Select an option...</option>
-                                    <option value="pre-revenue">Pre-revenue</option>
-                                    <option value="under-1m">&lt;$1M</option>
-                                    <option value="1m-5m">$1M - $5M</option>
-                                    <option value="5m-plus">$5M+</option>
-                                </select>
-                                <div class="field-error" id="err-revenue">Please select revenue estimation</div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message">What are you looking to achieve?</label>
-                                <textarea id="message" rows="4"
-                                    placeholder="Briefly describe your current accounting stack and what you need help with..."></textarea>
-                            </div>
-
-                            <button type="submit" id="submitBtn" class="btn btn-primary w-full mt-4 justify-center"
-                                style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">Schedule
-                                Consultation</button>
-                        </form>
+                        <!-- Calendly inline widget begin -->
+                        <div class="calendly-inline-widget" data-url="https://calendly.com/scepternexus" style="min-width: 320px; height: 700px; width: 100%;"></div>
+                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                        <!-- Calendly inline widget end -->
                     </div>
 
                 </div>
@@ -332,80 +276,7 @@
         </div>
     </div>
 
-    <script>
-        const form = document.getElementById('consultationForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        const validateForm = () => {
-            let isValid = true;
-
-            const checks = [
-                { id: 'fname', err: 'err-fname', valid: form.fname.value.trim() !== '' },
-                { id: 'lname', err: 'err-lname', valid: form.lname.value.trim() !== '' },
-                { id: 'email', err: 'err-email', valid: emailRegex.test(form.email.value.trim()) },
-                { id: 'company', err: 'err-company', valid: form.company.value.trim() !== '' },
-                { id: 'revenue', err: 'err-revenue', valid: form.revenue.value !== '' }
-            ];
-
-            checks.forEach(check => {
-                const errElement = document.getElementById(check.err);
-                if (!check.valid) {
-                    errElement.style.display = 'block';
-                    isValid = false;
-                } else {
-                    errElement.style.display = 'none';
-                }
-            });
-
-            submitBtn.disabled = !isValid;
-            return isValid;
-        };
-
-        ['fname', 'lname', 'email', 'company', 'revenue'].forEach(id => {
-            document.getElementById(id).addEventListener('input', validateForm);
-            document.getElementById(id).addEventListener('change', validateForm);
-        });
-
-        submitBtn.disabled = true;
-
-        form.addEventListener('submit', async function (event) {
-            event.preventDefault();
-            if (!validateForm()) return;
-
-            const formData = {
-                first_name: document.getElementById('fname').value,
-                last_name: document.getElementById('lname').value,
-                work_email: document.getElementById('email').value,
-                company_name: document.getElementById('company').value,
-                annual_revenue_est: document.getElementById('revenue').value,
-                goals: document.getElementById('message').value
-            };
-
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = 'Submitting...';
-            submitBtn.disabled = true;
-
-            try {
-                const response = await fetch('/api/consultation', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-
-                if (response.ok) {
-                    window.showToast('Consultation requested successfully!', false);
-                    form.reset();
-                    submitBtn.disabled = true;
-                }
-            } catch (error) {
-                console.error(error);
-            } finally {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = !validateForm();
-            }
-        });
-    </script>
 </body>
 
 </html>
